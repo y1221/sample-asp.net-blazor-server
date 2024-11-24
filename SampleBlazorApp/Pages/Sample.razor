@@ -1,8 +1,11 @@
 ﻿@page "/sample"
+@using SampleBlazorApp.Data;
 
 <PageTitle>Sample</PageTitle>
 
 <h1>Sample</h1>
+
+<h2>Calc Total</h2>
 
 <p role="status">Total: @total</p>
 
@@ -10,6 +13,30 @@
     <input type="number" class="form-control col-9" @bind="val" />
     <button class="btn btn-primary" @onclick="CalcTotal">Click me</button>
 </div>
+
+<h2>Input Personal Information</h2>
+
+<p class="h3">@message</p>
+
+<EditForm Model="@myData" OnValidSubmit="@Submit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    
+    <div class="form-group">
+        <label for="name">名前：</label>
+        <InputText id="name" class="form-control" @bind-Value="myData.Name" />
+    </div>
+    <div class="form-group">
+        <label for="age">年齢：</label>
+        <InputNumber id="age" class="form-control" @bind-Value="myData.Age" />
+    </div>
+    <div class="form-group">
+        <label for="mail">メール：</label>
+        <InputText id="mail" class="form-control" @bind-Value="myData.Mail" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">送信</button>
+</EditForm>
 
 @code {
     private int total = 0;
@@ -22,5 +49,13 @@
         {
             total += i;
         }
+    }
+
+    private MyData myData = new MyData();
+    private string message = string.Empty;
+
+    private void Submit()
+    {
+        message = myData.ToString();
     }
 }
