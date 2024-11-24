@@ -5,8 +5,8 @@ using SampleBlazorApp.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddRazorPages();
-builder.Services.AddServerSideBlazor();
+builder.Services.AddRazorPages(); // Razor Pages機能追加
+builder.Services.AddServerSideBlazor(); // Blazor Server機能追加
 builder.Services.AddSingleton<WeatherForecastService>();
 
 var app = builder.Build();
@@ -25,6 +25,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+// Blazorのルーティング関係をセットアップ
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 
