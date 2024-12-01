@@ -1,9 +1,0 @@
-■ページ設計
-_Host.cshtml
-  └ App.razor
-      └ MainLayout.razor
-          ├ NavMenu.razor
-          └ 各ページコンテンツ
-
-※_Host.cshtml, App.razor, _Imports.razorはこのまま利用（編集することはあまりない）
-  MainLayout.razor以降をカスタマイズする
